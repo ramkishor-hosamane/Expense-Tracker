@@ -1,0 +1,65 @@
+<div class="main_content_iner ">
+  <div class="container-fluid p-0">
+      <div class="row justify-content-center">
+          <div class="col-12">
+              <div class="dashboard_header mb_50">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <div class="dashboard_header_title">
+                              <h3> Login</h3>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="dashboard_breadcam text-end">
+                              <p><a href="index.html">Dashboard</a> <i class="fas fa-caret-right"></i> login</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-12">
+              <div class="white_box mb_30">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-6">
+
+                          <!-- Inserting content from mod.html -->
+                          <div class="modal-content cs_modal">
+                              <div class="modal-header justify-content-center theme_bg_1">
+                                  <h5 class="modal-title text_white">User Login</h5>
+                              </div>
+                              <div class="modal-body">
+                                  <form #LoginForm="ngForm" (ngSubmit)="loginUser()" class="fade-in">
+                                      <div class="mb-3">
+                                          <label for="username" class="form-label">Username:</label>
+                                          <input type="text" id="username" name="username" class="form-control" [(ngModel)]="user.username" required>
+                                      </div>
+
+                                      <div class="mb-3">
+                                          <label for="password" class="form-label">Password:</label>
+                                          <input type="password" id="password" name="password" class="form-control" [(ngModel)]="user.password" required>
+                                      </div>
+
+                                      <button type="submit" class="btn_1 full_width text-center">Login</button>
+
+                                      <p>Need an account? <a data-bs-toggle="modal" data-bs-target="#sing_up"
+                                        data-bs-dismiss="modal" routerLink="/register"> Sign Up</a></p>
+                                  <div class="text-center">
+                                      <a  routerLink="/forgot-password" data-bs-toggle="modal" data-bs-target="#forgot_password"
+                                          data-bs-dismiss="modal" class="pass_forget_btn">Forget
+                                          Password?</a>
+                                  </div>
+                                  </form>
+
+                                  <!-- Display error message if loginError is set -->
+                                  <div *ngIf="loginError" class="alert alert-danger mt-3 fade-in" role="alert">
+                                      {{ loginError }}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

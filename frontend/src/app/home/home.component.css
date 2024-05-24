@@ -1,0 +1,36 @@
+.expense-by-category-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .border-double {
+    border: 3px  #102031; /* Double-lined border */
+    margin-bottom: 20px; /* Spacing between border and content */
+  }
+  .expense-card {
+    margin-bottom: 20px; /* Spacing between cards */
+    border: none; /* Remove border */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  }
+  
+  .expense-card:hover {
+    transform: translateY(-5px); /* Move the card up slightly on hover */
+  }
+  
+  .expense-card .card-body {
+    text-align: center; /* Center-align content */
+  }
+  
+  .expense-card .card-title {
+    font-size: 24px; /* Title font size */
+    font-weight: bold; /* Title font weight */
+  }
+  
+  .expense-card .card-text {
+    font-size: 18px; /* Text font size */
+    color: #6c757d; /* Text color */
+  }
+  

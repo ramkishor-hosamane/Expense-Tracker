@@ -1,0 +1,62 @@
+<!-- expense-management.component.html -->
+
+<div class="row m-4">
+   <div class="col-5">
+    <budget-form formType="Create" [categories] = "categories" (afterBudgetCreateEvent)="fetchBudgets()">
+
+    </budget-form>
+   </div>
+    <div class="col">
+      <div class="card p-4 shadow-lg bg-light rounded">
+        <h2 class="card-title text-center mb-4 text-primary">Budgets </h2>
+        
+        <div class="table-responsive mt-4">
+          <table class="table table-bordered">
+            <thead class="data-table-header">
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let b of budgets; let i = index" class="data-table-item">
+                <td class="text-center">
+                  <span [ngClass]="{
+                    'badge': true,
+                    'category-badge': true,
+                    'food-badge': b.category.name === 'Food',
+                    'grocery-badge': b.category.name === 'Grocery',
+                    'utilities-badge': b.category.name === 'Utilities',
+                    'clothes-badge': b.category.name === 'Clothes',
+                    'commute-badge': b.category.name === 'Commute',
+                    'health-badge': b.category.name === 'Health',
+                    'entertainment-badge': b.category.name === 'Entertainment',
+                    'rent-badge': b.category.name === 'Rent',
+
+
+                  }">
+                    {{ b.category.name }}
+                  </span>
+                </td>
+                <td>{{ b.amount | currency:'INR' }}</td>
+                <td class="text-center">
+                  <button class="btn btn-danger " (click)="deleteBudget(b.id)" title="Delete">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                  <button class="btn btn-info mx-2" (click)="updateBudget(b.id)" title="Edit">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+     
+      </div>
+    
+    </div>
+  </div>
+  
+  

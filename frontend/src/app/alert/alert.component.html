@@ -1,0 +1,10 @@
+<!-- <div *ngFor="let alert of alerts" class="alert" [ngClass]="alert.type">
+    {{ alert.message }}
+    <button type="button" class="close" (click)="removeAlert(alert)">×</button>
+</div> --> 
+<div *ngFor="let alert of alerts" class="alert text-white d-flex align-items-center justify-content-between mx-10" [ngClass]="alert.type"
+                                            role="alert">
+                                            <div class="alert-text">{{ alert.message }}</div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>

@@ -1,0 +1,154 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* data-table */
+
+  /* Custom styles */
+  .data-table-item {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+.data-table-header
+{
+  background-color: #6391ed;
+   color: white;
+}
+  .data-table-item:hover {
+    transform: translateY(-1px);
+    background-color: #e9ecef;
+  }
+  .category-badge {
+    font-size: 13px;
+     padding: 4px 8px;
+   /* border-radius: 10px; */
+  }
+
+  .food-badge {
+    background-color: #ffc107;
+    color: #212529;
+  }
+
+  .grocery-badge {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .utilities-badge {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .gadgets-badge {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  .clothes-badge {
+    background-color: #08a664;
+    color: #fff;
+  }
+
+  .commute-badge {
+    background-color: #de4655;
+    color: #fff;
+  }
+
+  .health-badge {
+    background-color: #0431a5;
+    color: #fff;
+  }
+
+  .entertainment-badge {
+    background-color: #ed7c12;
+    color: #fff;
+  }
+
+  .rent-badge {
+    background-color: #30da33;
+    color: #fff;
+  }
+
+  .gadgets-badge {
+    background-color: #9911dc;
+    color: #fff;
+  }
+
+  /* Animation */
+  .table tbody tr {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .table tbody tr:hover {
+    transform: translateY(-1px);
+    background-color: #e9ecef;
+  }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Form styles */
+
+
+label.form-label
+{
+    color: black;
+}
+
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #ffffff;
+    background-color: #dc3545 !important;
+    padding: 12px;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 12px;
+
+    }
+
+
+
+  .form-label {
+    font-weight: 600;
+    color: #495057;
+  }
+
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: #6391ed;
+    box-shadow: 0 0 8px rgba(99, 145, 237, 0.5);
+  }
+
+  .mb-3 {
+    margin-bottom: 1.5rem !important;
+  }
+
+
+
+
