@@ -164,4 +164,4 @@ import os
 
 
 # Custom email backend settings
-EMAIL_BACKEND = 'accounts.custom_email_backend.SnsEmailBackend'
+#EMAIL_BACKEND = 'accounts.custom_email_backend.SnsEmailBackend'
