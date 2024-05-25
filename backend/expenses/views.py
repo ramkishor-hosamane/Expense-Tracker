@@ -10,6 +10,8 @@ from .serializers import CategorySerializer, ExpenseSerializer,PredictionSeriali
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from elasticsearch_dsl import Search
+from .search_indexes import ELASTICSEARCH_AVAILABLE
+from rest_framework import status
 class ExpenseExportView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -69,9 +71,11 @@ class ExpenseDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return super().delete(request, *args, **kwargs)
 
 
-
 class PredictCategoryView(APIView):
     def post(self, request, *args, **kwargs):
+        if not ELASTICSEARCH_AVAILABLE:
+            return Response({"error": "Elasticsearch is not available"}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+        
         serializer = PredictionSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         description = serializer.validated_data['description']

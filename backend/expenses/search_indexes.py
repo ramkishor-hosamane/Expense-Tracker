@@ -1,11 +1,18 @@
-from elasticsearch_dsl import Document, Text, Integer,Float,Keyword
-from elasticsearch_dsl.connections import connections
+from elasticsearch_dsl import Document, Text, Float, connections
+from elasticsearch import ElasticsearchException
+from django.conf import settings
 from .models import Expense
 
-# Define a connection to your Elasticsearch cluster
-# Make sure to replace 'localhost' and '9200' with your Elasticsearch host and port
-connections.create_connection(hosts=['http://localhost:9200'])
-
+# Define a connection to your Elasticsearch cluster using settings
+elasticsearch_hosts = settings.ELASTICSEARCH_DSL['default']['hosts']
+if settings.ELASTICSEARCH_AVAILABLE:
+    try:
+        connections.create_connection(hosts=[elasticsearch_hosts])
+        ELASTICSEARCH_AVAILABLE = True
+    except ElasticsearchException:
+        ELASTICSEARCH_AVAILABLE = False
+else:
+    ELASTICSEARCH_AVAILABLE = False
 # Define the Elasticsearch index for the Expense model
 class ExpenseIndex(Document):
     amount = Float()
@@ -16,7 +23,8 @@ class ExpenseIndex(Document):
         name = 'expense_index'
 
     def save(self, **kwargs):
-        return super().save(**kwargs)
+        if ELASTICSEARCH_AVAILABLE:
+            return super().save(**kwargs)
     
     @classmethod
     def from_model(cls, expense):
@@ -28,4 +36,5 @@ class ExpenseIndex(Document):
         )
 
 # Register the index with Elasticsearch
-ExpenseIndex.init()
+if ELASTICSEARCH_AVAILABLE:
+    ExpenseIndex.init()

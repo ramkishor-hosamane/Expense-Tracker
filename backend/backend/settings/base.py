@@ -93,13 +93,7 @@ AUTHENTICATION_BACKENDS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:4200']
 CORS_ALLOW_CREDENTIALS = True
 
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': 'localhost:9200',
-    },
-}
 
-FRONT_END_DOMAIN = 'localhost:4200'
+ELASTICSEARCH_AVAILABLE = False
