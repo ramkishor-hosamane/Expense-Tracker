@@ -1,5 +1,4 @@
 from elasticsearch_dsl import Document, Text, Float, connections
-from elasticsearch import ElasticsearchException
 from django.conf import settings
 from .models import Expense
 
@@ -9,7 +8,7 @@ if settings.ELASTICSEARCH_AVAILABLE:
     try:
         connections.create_connection(hosts=[elasticsearch_hosts])
         ELASTICSEARCH_AVAILABLE = True
-    except ElasticsearchException:
+    except Exception:
         ELASTICSEARCH_AVAILABLE = False
 else:
     ELASTICSEARCH_AVAILABLE = False
