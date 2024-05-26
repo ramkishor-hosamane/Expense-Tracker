@@ -5,11 +5,8 @@ sudo apt update
 sudo apt upgrade -y
 
 # Install necessary packages
-sudo apt install -y python3-pip python3-dev nginx git docker.io
-
-# Start and enable Docker
-sudo systemctl start docker
-sudo systemctl enable docker
+sudo apt install -y python3-pip python3-dev nginx git
+sudo apt install -y libjpeg-dev zlib1g-dev
 
 cd /home/ubuntu/Expense-Tracker/backend
 # Set up a virtual environment

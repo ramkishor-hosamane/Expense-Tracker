@@ -1,0 +1,20 @@
+  GNU nano 7.2                                                                                         /etc/systemd/system/gunicorn.service                                                                                                   
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/Expense-Tracker/backend
+ExecStart=/home/ubuntu/Expense-Tracker/backend/env/bin/gunicorn --workers 3 --bind unix:/run/gunicorn.sock backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+
