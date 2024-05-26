@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'elasticsearch_dsl'
+    'elasticsearch_dsl',
+'import_export'
 ]
 
 MIDDLEWARE = [
@@ -94,6 +95,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = ['http://3.27.167.132:8000']
 
 
 ELASTICSEARCH_AVAILABLE = False

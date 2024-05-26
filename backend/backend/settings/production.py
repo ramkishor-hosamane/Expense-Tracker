@@ -1,6 +1,9 @@
+
+
+# production.py
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -18,6 +21,12 @@ ELASTICSEARCH_DSL = {
 }
 
 FRONT_END_DOMAIN = 'localhost:4200'
-CORS_ALLOWED_ORIGINS = ['*']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+    'http://3.27.167.132:8000',
+      'http://3.27.167.132',
+
+]
 
 ELASTICSEARCH_AVAILABLE = False
+
