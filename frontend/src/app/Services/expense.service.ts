@@ -5,13 +5,17 @@ import { AuthService } from './auth.service';
 import { Expense, PaginatedExpenseResponse } from '../expense/expense-view/expense.interface';
 
 import { map } from 'rxjs/operators';
+import { SettingsService } from './settings.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
   private apiUrl = 'http://127.0.0.1:8000/api/expenses';
 
-  constructor(private http: HttpClient,private authService:AuthService) {}
+  constructor(private http: HttpClient,private authService:AuthService,private settings:SettingsService) {
+    this.apiUrl = `${this.settings.getApiUrl()}/expenses`;
+
+  }
 
   createExpense(expense: any): Observable<any> {
     //console.log("Again whats the expense ",expense)
@@ -27,6 +31,7 @@ export class ExpenseService {
   // }
 
   getExpenses(page: number): Observable<PaginatedExpenseResponse> {
+    console.log("Sending requrest to ",this.apiUrl)
     return this.http.get<PaginatedExpenseResponse>(`${this.apiUrl}/?page=${page}`);
 }
 
