@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { AuthService } from './auth.service';
 export class AnalyticsService {
   private apiUrl = 'http://127.0.0.1:8000/api/analytics';
 
-  constructor(private http: HttpClient,private authService:AuthService) {}
+  constructor(private http: HttpClient,private authService:AuthService,private settings:SettingsService) {
+    this.apiUrl = `${this.settings.getApiUrl()}/analytics`;}
 
   
 
