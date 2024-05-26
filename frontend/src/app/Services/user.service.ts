@@ -16,17 +16,17 @@ export class UserService {
   }
 
   registerUser(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}signup/`, user);
+    return this.http.post(`${this.apiUrl}/signup/`, user);
   }
 
   loginUser(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}login/`, user);
+    return this.http.post(`${this.apiUrl}/login/`, user);
   }
   forgotPassword(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}forgot-password/`, user);
+    return this.http.post(`${this.apiUrl}/forgot-password/`, user);
   }
   resetPassword(user: any,token:any): Observable<any> {
-    return this.http.post(`${this.apiUrl}reset-password/${token}`, user);
+    return this.http.post(`${this.apiUrl}/reset-password/${token}`, user);
   }
   
 
