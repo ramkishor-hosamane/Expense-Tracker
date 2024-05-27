@@ -1,9 +1,9 @@
-<nav class="sidebar dark_sidebar">
+<nav [ngClass]="{'sidebar dark_sidebar': true, 'mini_sidebar': isMiniSidebar, 'active_sidebar': isActiveSidebar}">
     <div class="logo d-flex justify-content-between">
         <a class="large_logo" href="index.html"><img src="static/img/logo_white.png" alt></a>
         <a class="small_logo" href="index.html"><img src="static/img/mini_logo.png" alt></a>
-        <div class="sidebar_close_icon d-lg-none">
-            <i class="ti-close"></i>
+        <div class="sidebar_close_icon d-lg-none" (click) ="onBurgerMenuClose()">
+            <i class="ti-close" style="color: #736568;"></i>
         </div>
     </div>
     <ul id="sidebar_menu">

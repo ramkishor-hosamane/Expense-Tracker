@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
@@ -31,7 +32,7 @@ class LogInView(ObtainAuthToken):
 class Logout(APIView):
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, format=None):
+    def get(self, request, format=None):
         request.user.auth_token.delete()
         return Response(status=status.HTTP_200_OK)
     
@@ -44,7 +45,16 @@ class SignUpAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+class AccountAPIView(APIView):
+    serializer_class = UserSerializer
+    
+    def get(self, request):
+        queryset = User.objects.all()
+        user = get_object_or_404(queryset, pk=request.user.pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+    
+    
 class ForgotPasswordAPIView(APIView):
     permission_classes = [AllowAny]
 

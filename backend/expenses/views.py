@@ -86,13 +86,11 @@ class PredictCategoryView(APIView):
         response = search.execute()
         
         # Extract categories from search results
-        categories = [hit.category for hit in response]
-        
+        categories = [(hit.category,hit.amount) for hit in response]
         # If there are categories found, return the most common category
         if categories:
-            print(categories)
             predicted_category = max(set(categories), key=categories.count)
         else:
-            predicted_category = "Unknown"  # Default category if no matches found
+            predicted_category = "Unknown",0  # Default category if no matches found
         
-        return Response({'category': predicted_category})
+        return Response({'category': predicted_category[0],'amount': predicted_category[1]})

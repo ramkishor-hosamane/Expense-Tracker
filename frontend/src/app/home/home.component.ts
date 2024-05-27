@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from '../Services/analytics.service';
+import { AuthService } from '../Services/auth.service';
 
 
 @Component({
@@ -8,14 +9,16 @@ import { AnalyticsService } from '../Services/analytics.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  ExpenseTrendchartOptions: any;
+  ExpenseTrendchartOptions: any ={};
   total_expenses:any;
   category_expenses:any;
   total_income:any;
   income_change:any;
-  constructor(private analyticsService:AnalyticsService) { }
-  
+  constructor(private authService:AuthService,private analyticsService:AnalyticsService) { }
+  is_user_authenticated:boolean = false;
   ngOnInit(): void {
+    this.is_user_authenticated =  this.authService.isAuthenticated();
+
     this.analyticsService.getExpenseAnalytics().subscribe(
       (response: any) => {
         console.log(response)

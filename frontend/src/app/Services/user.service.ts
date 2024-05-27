@@ -18,9 +18,15 @@ export class UserService {
   registerUser(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup/`, user);
   }
-
+  getCurrentUser(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/my-account/`);
+  }
   loginUser(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login/`, user);
+  }
+
+  logoutUser(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/logout/`);
   }
   forgotPassword(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/forgot-password/`, user);

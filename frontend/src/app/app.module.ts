@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { UserRegistrationComponent } from './accounts/user-registration/user-registration.component';
 import { UserLoginComponent } from './accounts/user-login/user-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { TopbarComponent } from './topbar/topbar.component';
+import { TopbarComponent } from './navbar/topbar/topbar.component';
 import { HomeComponent } from './home/home.component';
 import { UserForgotPasswordComponent } from './accounts/user-forgot-password/user-forgot-password.component';
 import { UserResetPasswordComponent } from './accounts/user-reset-password/user-reset-password.component';
@@ -15,6 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ExpenseModule } from './expense/expense.module';
 import { AuthInterceptor } from './Services/auth-interceptor.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthInterceptor } from './Services/auth-interceptor.service';
     AppRoutingModule,
     NgApexchartsModule,
     ExpenseModule,
+    CommonModule,
   ],
   providers:[
     {

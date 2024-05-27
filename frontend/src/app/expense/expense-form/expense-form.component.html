@@ -14,7 +14,7 @@
   
       <div class="mb-3">
         <label for="category" class="form-label">Category:</label>
-        <select id="category" name="category" class="form-select" [(ngModel)]="expense.category.name" required>
+        <select id="category" name="category" class="form-select" [(ngModel)]="predictedCategory" required>
           <option *ngFor="let cat of categories" [ngValue]="cat.name" class="dropdown-item">{{ cat.name }}</option>
         </select>
       </div>

@@ -1,7 +1,7 @@
 <!-- <div class="container mt-5"> -->
   <navbar></navbar>
   
-  <section class="main_content dashboard_part large_header_bg">
+  <section [ngClass]="{'main_content dashboard_part large_header_bg': true, 'full_main_content': is_full_main_content}">
     <topbar></topbar>
     <div class="alert-container">
       <alert></alert>

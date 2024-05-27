@@ -22,7 +22,13 @@ export class ExpenseFormComponent {
      predictCategory(description: string): void {
 
       this.expenseService.predictCategory(description).subscribe(response => {
-       this.predictedCategory = response.category;
+        if(response.category != 'Unknown')
+        {
+          this.predictedCategory = response.category;
+          this.expense.amount = response.amount;
+   
+        }
+
      });
        }
 
