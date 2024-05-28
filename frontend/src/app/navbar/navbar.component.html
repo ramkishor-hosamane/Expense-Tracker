@@ -1,68 +1,66 @@
 <nav [ngClass]="{'sidebar dark_sidebar': true, 'mini_sidebar': isMiniSidebar, 'active_sidebar': isActiveSidebar}">
-    <div class="logo d-flex justify-content-between">
-        <a class="large_logo" href="index.html"><img src="static/img/logo_white.png" alt></a>
-        <a class="small_logo" href="index.html"><img src="static/img/mini_logo.png" alt></a>
-        <div class="sidebar_close_icon d-lg-none" (click) ="onBurgerMenuClose()">
-            <i class="ti-close" style="color: #736568;"></i>
-        </div>
+    <div class="logo d-flex justify-content-between align-items-center">
+      <a class="large_logo" href="index.html"><img src="static/img/logo_white.png" alt="Large Logo"></a>
+      <a class="small_logo d-lg-none" href="index.html"><img src="static/img/mini_logo.png" alt="Small Logo"></a>
+      <div class="sidebar_close_icon d-lg-none" (click)="onBurgerMenuClose()">
+        <i class="ti-close" style="color: #736568;"></i>
+      </div>
     </div>
     <ul id="sidebar_menu">
-        <li class>
-            <a class="has-arrow" routerLink="/" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="static/img/menu-icon/1.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Home</span>
-                </div>
-            </a> 
-        </li>
-
-       
-
-        <li *ngIf="is_user_authenticated">
-            <a class="has-arrow" routerLink="/expenses" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="static/img/menu-icon/forms.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Expenses</span>
-                </div>
-            </a> 
-        </li>
-
-        <li *ngIf="is_user_authenticated">
-            <a class="has-arrow" routerLink="/budgets" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="static/img/menu-icon/18.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Budget</span>
-                </div>
-            </a> 
-        </li>        
-        <li *ngIf="is_user_authenticated">
-            <a routerLink="/income" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="static/img/menu-icon/2.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Income</span>
-                </div>
-            </a>
-        </li>
-
-
-
-        <li *ngIf="is_user_authenticated">
-            <a routerLink="/analytics" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="static/img/menu-icon/7.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Analytics</span>
-                </div>
-            </a>
-        </li>
+      <li>
+        <a class="has-arrow" routerLink="/" aria-expanded="false">
+          <div class="nav_icon_small">
+            <img src="static/img/menu-icon/1.svg" alt="Home Icon">
+          </div>
+          <div class="nav_title">
+            <span>Home</span>
+          </div>
+        </a>
+      </li>
+  
+      <li *ngIf="is_user_authenticated">
+        <a class="has-arrow" routerLink="/expenses" aria-expanded="false">
+          <div class="nav_icon_small">
+            <img src="static/img/menu-icon/forms.svg" alt="Expenses Icon">
+          </div>
+          <div class="nav_title">
+            <span>Expenses</span>
+          </div>
+        </a>
+      </li>
+  
+      <li *ngIf="is_user_authenticated">
+        <a class="has-arrow" routerLink="/budgets" aria-expanded="false">
+          <div class="nav_icon_small">
+            <img src="static/img/menu-icon/18.svg" alt="Budget Icon">
+          </div>
+          <div class="nav_title">
+            <span>Budget</span>
+          </div>
+        </a>
+      </li>
+  
+      <li *ngIf="is_user_authenticated">
+        <a routerLink="/income" aria-expanded="false">
+          <div class="nav_icon_small">
+            <img src="static/img/menu-icon/2.svg" alt="Income Icon">
+          </div>
+          <div class="nav_title">
+            <span>Income</span>
+          </div>
+        </a>
+      </li>
+  
+      <li *ngIf="is_user_authenticated">
+        <a routerLink="/analytics" aria-expanded="false">
+          <div class="nav_icon_small">
+            <img src="static/img/menu-icon/7.svg" alt="Analytics Icon">
+          </div>
+          <div class="nav_title">
+            <span>Analytics</span>
+          </div>
+        </a>
+      </li>
     </ul>
-</nav>
+  </nav>
+      

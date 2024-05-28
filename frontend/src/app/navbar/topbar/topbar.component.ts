@@ -3,6 +3,7 @@ import { AuthService } from '../../Services/auth.service';
 import { SharedService } from '../../Services/shared.service';
 import { UserService } from '../../Services/user.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'topbar',
@@ -11,14 +12,36 @@ import { Router } from '@angular/router';
 })
 export class TopbarComponent implements OnInit {
   is_user_authenticated = false
-  user = {'username':'ram','email':'ramhosamawwwne@gmail.com'}
+  user = {'username':'rams  ','email':'ramhosamawwwne@gmail.com'}
+  private refreshTopbarSubscription: Subscription= new Subscription();
+
   constructor(private authService:AuthService,private sharedService:SharedService,private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
-    this.is_user_authenticated =  this.authService.isAuthenticated();
-    this.userService.getCurrentUser().subscribe(response => {
-      this.user = response;
+
+    this.refreshTopbarSubscription = this.sharedService.topbarRefresh.subscribe(() => {
+this.refreshPage();
     });
+    
+this.refreshPage();
+
+  }
+  ngOnDestroy() {
+    this.refreshTopbarSubscription.unsubscribe();
+
+  }
+
+
+  refreshPage(){
+
+    this.is_user_authenticated =  this.authService.isAuthenticated();
+    if (this.is_user_authenticated)
+    {
+      this.userService.getCurrentUser().subscribe(response => {
+        this.user = response;
+      });
+    }
+
   }
   onMenuClick() {
     this.sharedService.emitSidebarToggle();
@@ -31,7 +54,11 @@ export class TopbarComponent implements OnInit {
       response => {
         console.log("Logged out ",response)
         this.authService.clearAuthToken();
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
+        this.sharedService.emitNavbarRefresh();
+        this.sharedService.emitHomeRefresh();
+        this.sharedService.emitTopbarRefresh();
+
       },
       error =>{
         console.log(error)

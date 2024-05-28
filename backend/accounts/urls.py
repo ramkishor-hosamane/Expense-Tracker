@@ -7,5 +7,5 @@ urlpatterns = [
     path('signup/', SignUpAPIView.as_view(), name='signup'),
     path('forgot-password/', ForgotPasswordAPIView.as_view(), name='forgot-password'),
     path('reset-password/<str:token>', ResetPasswordAPIView.as_view(), name='reset-password'),
-    path('my-account',AccountAPIView.as_view())    
+    path('my-account/',AccountAPIView.as_view(),name='my-account')    
 ]

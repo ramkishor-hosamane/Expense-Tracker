@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { AuthService } from '../../Services/auth.service';
+import { SharedService } from '../../Services/shared.service';
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -10,7 +11,7 @@ import { AuthService } from '../../Services/auth.service';
 export class UserLoginComponent {
   user = { username: '', password: '' };
   loginError = ''
-  constructor(private userService: UserService,private authService:AuthService, private router: Router) {}
+  constructor(private userService: UserService,private authService:AuthService, private router: Router,private sharedService:SharedService) {}
 
  
   loginUser() {
@@ -26,7 +27,11 @@ export class UserLoginComponent {
         this.authService.setAuthToken(authToken);
   
         // Optionally, you can navigate to another page after successful login
-        this.router.navigate(['/expenses']);
+        this.router.navigate(['/home']);
+        this.sharedService.emitNavbarRefresh();
+        this.sharedService.emitHomeRefresh();
+        this.sharedService.emitTopbarRefresh();
+
       },
       error => {
         console.error('Login error:', error);

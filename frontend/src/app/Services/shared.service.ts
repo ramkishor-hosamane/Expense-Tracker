@@ -7,6 +7,9 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class SharedService {
   sidebarToggle = new EventEmitter<void>();
   burgerSidebarToggle = new EventEmitter<void>();
+  navbarRefresh = new EventEmitter<void>();
+  homeRefresh = new EventEmitter<void>();
+  topbarRefresh = new EventEmitter<void>();
 
   emitSidebarToggle() {
     this.sidebarToggle.emit();
@@ -14,6 +17,18 @@ export class SharedService {
 
   emitBurgerSidebarToggle(){
     this.burgerSidebarToggle.emit();
+
+  }
+  emitNavbarRefresh(){
+    this.navbarRefresh.emit();
+
+  }
+  emitHomeRefresh(){
+    this.homeRefresh.emit();
+
+  }
+  emitTopbarRefresh(){
+    this.topbarRefresh.emit();
 
   }
 }

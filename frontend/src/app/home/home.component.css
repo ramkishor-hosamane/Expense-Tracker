@@ -1,3 +1,14 @@
+.landing_img
+{
+ margin-top: 20px;
+ margin-bottom: 20px;
+ height: 250px;
+}
+.image-holder
+{
+  background: url('../../assets/expense1.jpg') no-repeat center;
+  width: 500px;
+}
 .expense-by-category-container {
     padding: 20px;
     background-color: #f8f9fa;

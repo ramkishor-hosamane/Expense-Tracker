@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from '../Services/analytics.service';
 import { AuthService } from '../Services/auth.service';
+import { Subscription } from 'rxjs';
+import { SharedService } from '../Services/shared.service';
 
 
 @Component({
@@ -14,10 +16,30 @@ export class HomeComponent implements OnInit {
   category_expenses:any;
   total_income:any;
   income_change:any;
-  constructor(private authService:AuthService,private analyticsService:AnalyticsService) { }
+  private homeRefreshSubscription: Subscription= new Subscription();
+
+  constructor(private authService:AuthService,private analyticsService:AnalyticsService,private sharedService:SharedService) { }
   is_user_authenticated:boolean = false;
+
   ngOnInit(): void {
+    this.homeRefreshSubscription = this.sharedService.homeRefresh.subscribe(() => {
+      this.refreshPage();
+
+    });
+    this.refreshPage();
+  }
+  refreshPage(){
+
     this.is_user_authenticated =  this.authService.isAuthenticated();
+    console.log("Refreshing home[age")
+    if (this.is_user_authenticated)
+    {
+      
+      this.getAnalytics();
+    }
+
+  }
+  getAnalytics(){
 
     this.analyticsService.getExpenseAnalytics().subscribe(
       (response: any) => {
@@ -70,8 +92,11 @@ export class HomeComponent implements OnInit {
         console.error('something happend while fetching analytics',error)
       }
     )
+  }
 
-    
+  ngOnDestroy() {
+    this.homeRefreshSubscription.unsubscribe();
+
   }
 
 }

@@ -1,52 +1,166 @@
 <div class="main_content_iner">
     <div class="container-fluid p-0 sm_padding_15px">
 
-
-
-        <div *ngIf="!is_user_authenticated" class="row justify-content-center">
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center border-0 shadow-lg animated fadeInLeft">
-                    <div class="card-body">
-                        <h2 class="card-title">Welcome to Our Platform</h2>
-                        <p class="card-text">Unlock exclusive features by signing up now!</p>
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Sign Up</a>
+        <div *ngIf="!is_user_authenticated">
+                
+                    <!-- Welcome Section -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="white_card mb-30  border-0 shadow-lg animated fadeInLeft">
+                    <div class="white_card_header text-center">
+                        <div class="box_header m-0 flex-wrap">
+                            <div class="main-title mb-10 ">
+                                <h3 class="m-0 justify-content-center">Welcome to Expense Tracker</h3>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center border-0 shadow-lg animated fadeInRight">
-                    <div class="card-body">
-                        <h2 class="card-title">Explore Our Services</h2>
-                        <p class="card-text">Discover a range of services tailored for you.</p>
-                        <a href="#" class="btn btn-secondary btn-lg btn-block">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div *ngIf="!is_user_authenticated" class="row justify-content-center">
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center border-0 shadow-lg animated fadeInLeft">
-                    <div class="card-body">
-                        <h2 class="card-title">Stay Updated</h2>
-                        <p class="card-text">Subscribe to our newsletter for the latest news and updates.</p>
-                        <a href="#" class="btn btn-info btn-lg btn-block">Subscribe Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="card text-center border-0 shadow-lg animated fadeInRight">
-                    <div class="card-body">
-                        <h2 class="card-title">Contact Us</h2>
-                        <p class="card-text">Have questions? Reach out to our support team.</p>
-                        <a href="#" class="btn btn-warning btn-lg btn-block">Contact Support</a>
+                    <div class="white_card_body image-holders">
+                        
+                        <div class="image-holder">
+                            <!-- <img src="assets/expense 3.jpg" class="img-fluid" alt="Welcome Image"> -->
+                        </div>
+                            
+                        <div class="row auth_holder mt-4 justify-content-center">
+                            <div class="col-md-6 mb-3">
+                                <p class="card-text" style="color: rgb(26, 25, 25);font-size: medium;">Take control of your finances by signing up now!</p>
+                                <a routerLink="/register" class="btn btn-primary">Sign Up</a>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <p class="card-text"  style="color: rgb(26, 25, 25);font-size: medium;">Already have an account?</p>
+                                <a routerLink="/login" class="btn btn-secondary">Login</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+
+
+                <div class="row justify-content-center my-5">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="assets/undraw/report.svg" class="card-img-top landing_img" alt="Budgeting">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Budgeting</h5>
+                                <p class="card-text">Set unlimited daily, weekly, monthly, or one-time budgets.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="assets/undraw/control.svg" class="card-img-top landing_img" alt="Expense Control">
+                            <div class="card-body">
+                                <h5 class="card-title">Expense Control</h5>
+                                <p class="card-text">See every transaction, synced and categorized automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="assets/undraw/planning.svg" class="card-img-top landing_img" alt="Planning">
+                            <div class="card-body">
+                                <h5 class="card-title">Planning</h5>
+                                <p class="card-text">Get ahead of the curve. Automated upcoming payment notifications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <img src="assets/undraw/goals.svg" class="card-img-top landing_img" alt="Planning">
+
+                                <h5 class="card-title">Why Expense Tracker?</h5>
+                                <p class="card-text">Expense Tracker is simply smarter. We combine best-in-breed AI driven categorization and analytics with a deep set of features that are proven to work.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <img src="assets/undraw/user_Driven.svg" class="card-img-top landing_img" alt="Planning">
+
+                                <h5 class="card-title">User Driven</h5>
+                                <p class="card-text">Expense Tracker isn’t a “system.” You drive your own decision making process. Expense Tracker learns from the user to provide only the data and tools you need most.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <img src="assets/undraw/private.svg" class="card-img-top landing_img" alt="Planning">
+
+                                <h5 class="card-title">Private</h5>
+                                <p class="card-text">BudgetBakers does not sell customer data to 3rd parties. Ever. Your data is yours. Our mission is to help you use it to lead a richer life.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="icon mb-3">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </div>
+                                <h5 class="card-title">Ask the Questions</h5>
+                                <p class="card-text">Where does my money go?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="icon mb-3">
+                                    <i class="fa fa-chart-line" aria-hidden="true"></i>
+                                </div>
+                                <h5 class="card-title">See the Data</h5>
+                                <p class="card-text">Unlock key insights.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="icon mb-3">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <h5 class="card-title">Be Efficient</h5>
+                                <p class="card-text">No missed payments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="icon mb-3">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </div>
+                                <h5 class="card-title">Have the Answers</h5>
+                                <p class="card-text">Anytime, anywhere.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        
+        <!-- Add your styles and scripts -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            .icon {
+                font-size: 2em;
+            }
+            .card-body {
+                padding: 20px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
 
 
         <div *ngIf="is_user_authenticated" class="row">

@@ -20,7 +20,7 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     // Check if the authentication token exists
-    console.log("this.getAuthToken() = ",this.getAuthToken())
+    console.log("this.getAuthToken() = ",this.getAuthToken(),!!this.getAuthToken())
     return !!this.getAuthToken();
   }
 }
