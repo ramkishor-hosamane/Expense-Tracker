@@ -17,6 +17,7 @@ const routes: Routes = [
  { path: 'budgets', loadChildren: () => import('./budget/budget.module').then(m => m.BudgetModule) },
   // { path: 'expenses/:expenseId', component: ExpenseUpdateComponent },
   { path: 'expenses', loadChildren: () => import('./expense/expense.module').then(m => m.ExpenseModule) },
+  { path: 'incomes', loadChildren: () => import('./income/income.module').then(m => m.IncomeModule) },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },

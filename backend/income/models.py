@@ -14,6 +14,6 @@ class Income(models.Model):
     description = models.CharField(max_length=50)
     date = models.DateField(default=datetime.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    choices = models.CharField(max_length=50, choices=CHOICES)
+    type = models.CharField(max_length=50, choices=CHOICES)
 
 

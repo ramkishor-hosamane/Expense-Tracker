@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from accounts.custom_email_backend import SnsEmailBackend
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
-s
+
 from django.core import signing
 from django.utils import timezone
 from rest_framework.exceptions import NotFound
