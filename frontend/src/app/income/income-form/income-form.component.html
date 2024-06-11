@@ -13,7 +13,7 @@
       <div class="mb-3">
         <label for="category" class="form-label">Type:</label>
         <select id="category" name="category" class="form-select" [(ngModel)]="income.type" required>
-          <option *ngFor="let income_type of income_types | keyvalue" [ngValue]="income_type.key" class="dropdown-item">{{ income_type.value }}</option>
+          <option *ngFor="let income_type of income_types | keyvalue" [ngValue]="income_type.value" class="dropdown-item">{{ income_type.value }}</option>
         </select>
       </div>
       <div class="mb-3">

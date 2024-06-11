@@ -4,11 +4,11 @@ from datetime import datetime
 # Create your models here.
 class Income(models.Model):
     CHOICES = (
-        ('stock', 'Stock'),
-        ('buisness', 'Buisness'),
-        ('paycheck', 'Paycheck'),
-        ('rd','Recurring Deposit'),
-        ('mf', 'Mutual funds')
+        ('Stock', 'Stock'),
+        ('Buisness', 'Buisness'),
+        ('Paycheck', 'Paycheck'),
+        ('Recurring Deposit','Recurring Deposit'),
+        ('Mutual funds', 'Mutual funds')
     )
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=50)
