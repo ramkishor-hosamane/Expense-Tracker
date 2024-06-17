@@ -1,0 +1,18 @@
+<div ngbAccordion>
+  <div ngbAccordionItem [collapsed]="true" *ngFor="let category of categoryData; let i = index">
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton >{{ category.category_name }}</button>
+      <!-- <span class="badge bg-secondary">{{ category.total_amount }}</span> -->
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <div *ngFor="let expense of category.expenses" class="expense-item">
+            <p><strong>{{ expense.description }}</strong> - {{ expense.amount }}</p>
+          </div>
+        </ng-template>
+        
+      </div>
+    </div>
+  </div>
+</div>

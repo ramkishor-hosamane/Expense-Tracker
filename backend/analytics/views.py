@@ -1,12 +1,65 @@
-from django.shortcuts import render
 from expenses.models import Expense
-from budgets.models import Category
+from budgets.models import Category,Budget
 from django.db.models import Sum
 from rest_framework.response import Response
 from django.http import JsonResponse
 import datetime
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+
+
+
+
+from rest_framework.views import APIView
+
+class CategoryExpenseBreakdown(APIView):
+    def get(self, request):
+        categories = Category.objects.all()
+        category_data = []
+        
+        for category in categories:
+            expenses = Expense.objects.filter(category=category)
+            total_amount = expenses.aggregate(total_amount=Sum('amount'))['total_amount'] or 0
+            expense_details = [{
+                'description': expense.description,
+                'amount': expense.amount
+            } for expense in expenses]
+            
+            category_data.append({
+                'category_name': category.name,
+                'total_amount': total_amount,
+                'expenses': expense_details
+            })
+        
+        return Response(category_data)
+
+
+
+
+class BudgetVsExpenseHistogram(APIView):
+    def get(self, request):
+        categories = Category.objects.all()
+        category_data = []
+        
+        for category in categories:
+            budget = Budget.objects.filter(category=category).first()
+            expenses = Expense.objects.filter(category=category)
+            total_budget = budget.amount if budget else 0
+            total_expense = expenses.aggregate(total_expense=Sum('amount'))['total_expense'] or 0
+            
+            category_data.append({
+                'category_name': category.name,
+                'budget': total_budget,
+                'expense': total_expense
+            })
+        
+        return Response(category_data)
+
+
+
+
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

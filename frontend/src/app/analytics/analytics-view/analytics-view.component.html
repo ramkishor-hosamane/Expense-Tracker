@@ -1,0 +1,129 @@
+<div class="main_content_iner">
+    <div class="container-fluid p-0 sm_padding_15px">
+
+       
+        <!-- Add your styles and scripts -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            .icon {
+                font-size: 2em;
+            }
+            .card-body {
+                padding: 20px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+
+
+        
+        <div *ngIf="is_user_authenticated" class="row ">
+            
+         
+
+          
+            <div class="col-xl-12">
+                <div class="white_card   card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0 flex-wrap">
+                             <div class="main-title mb_10">
+                                                        <h3 class="m-0"> Expense Trends</h3>
+
+                            </div> 
+                            <div class="view_btns">
+                                <a href="#" class="mr_5 mb_10  small_blue_btn active">All</a>
+                                <a href="#" class="mr_5 mb_10  small_blue_btn active">1M</a>
+                                <a href="#" class="mr_5 mb_10  small_blue_btn">6M</a>
+                                <a href="#" class="mr_5 mb_10  small_blue_btn">1Y</a>
+                                <a href="#" class="mr_5 mb_10  small_blue_btn">YTD</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="row "> <!--justify-content-center-->
+                            <div class="col">
+                                <div class="card_box box_shadow position-relative mb-4">
+                                   
+                                    <div>
+                                        <!-- <apx-chart [series]="ExpenseTrendchartOptions.series" [chart]="ExpenseTrendchartOptions.chart" [annotations]="ExpenseTrendchartOptions.annotations"
+                                          [colors]="ExpenseTrendchartOptions.colors" [dataLabels]="ExpenseTrendchartOptions.dataLabels" [stroke]="ExpenseTrendchartOptions.stroke"
+                                          [labels]="ExpenseTrendchartOptions.labels" [legend]="ExpenseTrendchartOptions.legend" [markers]="ExpenseTrendchartOptions.markers"
+                                          [fill]="ExpenseTrendchartOptions.fill" [tooltip]="ExpenseTrendchartOptions.tooltip" [plotOptions]="ExpenseTrendchartOptions.plotOptions"
+                                          [responsive]="ExpenseTrendchartOptions.responsive" [xaxis]="ExpenseTrendchartOptions.xaxis" [yaxis]="ExpenseTrendchartOptions.yaxis"
+                                          [forecastDataPoints]="ExpenseTrendchartOptions.forecastDataPoints" [grid]="ExpenseTrendchartOptions.grid" [states]="ExpenseTrendchartOptions.states"
+                                           [subtitle]="ExpenseTrendchartOptions.subtitle" [theme]="ExpenseTrendchartOptions.theme"
+                                          [autoUpdateSeries]="ExpenseTrendchartOptions.autoUpdateSeries">
+                                        </apx-chart> -->
+                                      </div>
+                                      
+                                      
+                
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+       
+            
+           
+<!-- d-flex justify-content-center -->
+            <div class="col-xl-12  mb_30 "> 
+                <div class="white_card ">
+                    <div class="white_card_header">
+                        <div class="box_header m-0 flex-wrap">
+                             <div class="main-title mb_10">
+                            <h3 class="m-0"> Category wise Expense Distribution</h3>
+
+                            </div> 
+                           
+                        </div>
+                    </div>
+                    <div class="white_card_body anlite_table p-0">
+                        <div class="row">
+                            <category-expenses-breakdown></category-expenses-breakdown>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+       
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="row">
+    <budget-expenses-histogram></budget-expenses-histogram>
+
+</div>
+
+<div class="row">
+
+</div> -->
+
+
