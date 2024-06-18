@@ -7,6 +7,7 @@ import { BudgetVsExpensesComponent } from './budget-vs-expenses/budget-vs-expens
 import { AnalyticsViewComponent } from './analytics-view/analytics-view.component';
 import { AnalyticsRoutingModule } from './analytics-routing.module';
 import { NgbAccordionConfig, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { NgbAccordionConfig, NgbAccordionModule } from '@ng-bootstrap/ng-bootstr
     CommonModule,
     HttpClientModule,
     AnalyticsRoutingModule,
-    NgbAccordionModule
+    NgbAccordionModule,
+    NgApexchartsModule,
+
   ]
   
 })
