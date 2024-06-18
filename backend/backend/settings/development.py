@@ -15,7 +15,7 @@ ELASTICSEARCH_DSL = {
         'hosts': 'localhost:9200',
     },
 }
-ELASTICSEARCH_AVAILABLE = True
+ELASTICSEARCH_AVAILABLE = False
 
 
 FRONT_END_DOMAIN = 'localhost:4200'

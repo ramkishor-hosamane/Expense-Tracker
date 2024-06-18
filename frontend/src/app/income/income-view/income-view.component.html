@@ -1,0 +1,64 @@
+
+<div class="container-fluid my-4">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <income-form formType="Create"  (afterIncomeCreateEvent)="fetchIncomes()"></income-form>
+      </div>
+      <div class="col-md-8">
+        <div class="card p-4 shadow-lg bg-light rounded">
+          <h2 class="card-title text-center mb-4 text-primary">Incomes</h2>
+          <div class="d-flex justify-content-end mb-4">
+            <button class="btn btn-success" (click)="ExportIncomes()">Export Income</button>
+          </div>
+          <div class="table-responsive mt-4">
+            <table class="table table-bordered">
+              <thead class="data-table-header">
+                <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Income Type</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let i of incomes; let ind = index" class="data-table-item">
+                  <td style="word-break: break-word;">{{ i.description }}</td>
+                  <td>{{ i.amount | currency:'INR' }}</td>
+                  <td class="text-center">
+                    <span [ngClass]="{
+                      'badge': true,
+                      'category-badge': true,
+                      'food-badge': i.type === 'Stock',
+                      'grocery-badge': i.type === 'Paycheck',
+                      'utilities-badge': i.type === 'Utilities',
+                      'clothes-badge': i.type === 'Buisness',
+                      'commute-badge': i.type === 'Recurring Deposit',
+                      'health-badge': i.type === 'Mutual funds',
+                      'entertainment-badge': i.type === 'Entertainment',
+                      'rent-badge': i.type === 'Rent',
+                      'gadgets-badge': i.type === 'Gadgets'
+                    }">
+                      {{ i.type }}
+                    </span>
+                  </td>
+                  <td>{{ i.date | date:'longDate' }}</td>
+                  <td class="text-center">
+                    <button class="btn btn-danger" (click)="deleteIncome(i.id)" title="Delete">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                    <button class="btn btn-info mx-2" (click)="updateIncome(i.id)" title="Edit">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+              <ngb-pagination [collectionSize]="noOfIncomes" [(page)]="currentPage" (pageChange)="loadPageData()"></ngb-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

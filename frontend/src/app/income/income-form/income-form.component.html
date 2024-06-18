@@ -1,0 +1,27 @@
+
+<div class="card p-4 shadow-lg bg-light rounded">
+    <h2 class="card-title text-center mb-4 text-primary">{{formType}} Income</h2>
+    <form #IncomeForm="ngForm" (ngSubmit)="onFormSubmit()" class="form-container">
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" id="description" name="description" class="form-control" [(ngModel)]="income.description"  required>
+      </div>
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount (INR):</label>
+        <input type="number" id="amount" name="amount" class="form-control" [(ngModel)]="income.amount" required>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Type:</label>
+        <select id="category" name="category" class="form-select" [(ngModel)]="income.type" required>
+          <option *ngFor="let income_type of income_types | keyvalue" [ngValue]="income_type.value" class="dropdown-item">{{ income_type.value }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date:</label>
+        <input type="date" id="date" name="date" class="form-control" [(ngModel)]="income.date" required>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">{{formType}} Income</button>
+      </div>
+    </form>
+  </div>

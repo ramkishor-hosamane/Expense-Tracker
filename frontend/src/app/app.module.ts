@@ -16,6 +16,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { ExpenseModule } from './expense/expense.module';
 import { AuthInterceptor } from './Services/auth-interceptor.service';
 import { CommonModule } from '@angular/common';
+import { IncomeModule } from './income/income.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     NgApexchartsModule,
     ExpenseModule,
+    IncomeModule,
+    AnalyticsModule,
     CommonModule,
   ],
   providers:[

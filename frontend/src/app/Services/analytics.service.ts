@@ -30,6 +30,21 @@ export class AnalyticsService {
     return this.http.get<any[]>(`${this.apiUrl}/expense_distribution`);
   }
   
+  getCategoryExpenseBreakdown(): Observable<any[]> {
+   
+    
+  
+    return this.http.get<any[]>(`${this.apiUrl}/category-expense-breakdown`);
+  }
+
+  getBudgetVsExpenseHistogram(): Observable<any[]> {
+   
+    
+  
+    return this.http.get<any[]>(`${this.apiUrl}/budget-vs-expense-histogram`);
+  }
+
+
   getExpenseTrends(start_date:any =null,end_date:any =null): Observable<any[]> {
     
     
