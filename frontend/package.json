@@ -20,6 +20,7 @@
     "@angular/router": "^17.3.0",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "apexcharts": "^3.49.1",
+    "dotenv": "^16.4.5",
     "ng-apexcharts": "^1.10.0",
     "ng-bootstrap": "^1.6.3",
     "ngx-apexcharts": "^0.4.12",
