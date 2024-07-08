@@ -75,4 +75,11 @@ export class ExpenseService {
       responseType: 'blob' // Set response type to Blob to handle file download
     });
   }
+
+
+  uploadExpense(file: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('expense_file', file, file.name);
+    return this.http.post<any>(`${this.apiUrl}/import_expenses/`, formData);
+  }
 }

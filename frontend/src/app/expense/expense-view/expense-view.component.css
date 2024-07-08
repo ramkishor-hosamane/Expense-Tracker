@@ -2,6 +2,17 @@
 
 
 
+/*   
+
+
+.model-dialog
+{
+    max-width: 1600px !important;
+} */
+
+@media (min-width: 1200px) {
+    .modal-xl {
+      max-width: 1140px;  /* Example: adjust to your desired width */
+    }
+  }
   
-
-

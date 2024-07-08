@@ -1,0 +1,48 @@
+<div class="card p-4 shadow-lg bg-light rounded">
+    <h2 class="card-title text-center mb-4 text-primary">Import Expense</h2>
+    
+    <form #ExpenseForm="ngForm" (ngSubmit)="onFormSubmit()" class="form-container">
+        <div class="row mb-3" *ngFor="let expense of imported_expenses; let i = index; trackBy: trackByFn">
+            <h3> Expense - {{ i + 1 }}</h3>
+            <div class="col">
+                <label for="description-{{ expense.identifier }}" class="form-label">Description:</label>
+                <input type="text" id="description-{{ expense.identifier }}" name="description-{{ expense.identifier }}" class="form-control"
+                    [(ngModel)]="expense.description" required>
+                <div *ngIf="ExpenseForm.submitted && ExpenseForm.controls['description-' + expense.identifier].invalid"
+                    class="text-danger">Description is required.</div>
+            </div>
+            <div class="col">
+                <label for="amount-{{ expense.identifier }}" class="form-label">Amount (INR):</label>
+                <input type="number" id="amount-{{ expense.identifier }}" name="amount-{{ expense.identifier }}" class="form-control"
+                    [(ngModel)]="expense.amount" required>
+                <div *ngIf="ExpenseForm.submitted && ExpenseForm.controls['amount-' + expense.identifier].invalid"
+                    class="text-danger">Amount is required.</div>
+            </div>
+            <div class="col">
+                <label for="category-{{ expense.identifier }}" class="form-label">Category:</label>
+                <select id="category-{{ expense.identifier }}" name="category-{{ expense.identifier }}" class="form-select"
+                    [(ngModel)]="expense.category.id" required>
+                    <option *ngFor="let cat of categories" [ngValue]="cat.id">{{ cat.name }}</option>
+                </select>
+                <div *ngIf="ExpenseForm.submitted && ExpenseForm.controls['category-' + expense.identifier].invalid"
+                    class="text-danger">Category is required.</div>
+            </div>
+            <div class="col">
+                <label for="date-{{ expense.identifier }}" class="form-label">Date:</label>
+                <input type="date" id="date-{{ expense.identifier }}" name="date-{{ expense.identifier }}" class="form-control"
+                    [(ngModel)]="expense.date" required>
+                <div *ngIf="ExpenseForm.submitted && ExpenseForm.controls['date-' + expense.identifier].invalid"
+                    class="text-danger">Date is required.</div>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-danger" style="margin-top: 1.75em;" (click)="deleteExpense(i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Submit Expense</button>
+        </div>
+    </form>
+</div>

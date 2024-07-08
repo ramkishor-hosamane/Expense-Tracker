@@ -7,5 +7,6 @@ urlpatterns = [
     path('<int:pk>/', ExpenseDetailAPIView.as_view(), name='expense-detail'),
     path('predict_category/', PredictCategoryView.as_view(), name='predict_category'),
     path('export_expenses/', ExpenseExportView.as_view(), name='export_expenses'),
+    path('import_expenses/', ImportTransationsView.as_view(), name='import_expenses'),
 
     ]

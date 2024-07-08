@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild} from '@angular/core';
 import { ExpenseService } from '../../Services/expense.service';
 import { Router } from '@angular/router';
 import { PaginatedExpenseResponse } from './expense.interface';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-expense-view',
   templateUrl: './expense-view.component.html',
@@ -15,9 +16,16 @@ export class ExpenseViewComponent {
   categories: any[] = [];
   sortBy: string="";
   sortDirection: string="";
+  selectedFile: File| null = null;
+  @ViewChild('content') content!: ElementRef;
+  modalRef: NgbModalRef | null = null; // Modal reference
+  loading: boolean = false;
 
-  
-  constructor(private expenseService: ExpenseService,private router:Router) {}
+  imported_expenses=  [
+  ]
+  constructor(private expenseService: ExpenseService,private router:Router,private modalService: NgbModal) {
+    
+  }
 
   ngOnInit() {
     this.fetchExpenses();
@@ -63,6 +71,7 @@ export class ExpenseViewComponent {
   fetchCategories() {
     this.expenseService.getCategories().subscribe(response => {
       this.categories = response;
+      console.log("categories ",this.categories)
     });
   }
 
@@ -86,6 +95,66 @@ export class ExpenseViewComponent {
     );
   }
 
+  ImportExpenses() {
+    console.log("Importing expenses...");
+    this.expenseService.ExportExpenses().subscribe(
+      (response: Blob) => {
+        const blob = new Blob([response], { type: 'text/csv' }); // Create Blob from response
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'expenses.csv'; // Set desired filename
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      },
+      error => {
+        console.error('Error exporting expenses:', error);
+      }
+    );
+  }
+  
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
+  }
 
- 
+  onSubmitUploadFile() {
+    if (this.selectedFile) {
+      console.log("Selected file:", this.selectedFile);
+      this.loading = true; // show loading spinner
+
+      this.expenseService.uploadExpense(this.selectedFile).subscribe(response => {
+        console.log(response)
+       
+        this.imported_expenses = response['transactions']
+        // Ensure the modal is open and update its content
+        this.modalRef = this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' ,fullscreen:true,scrollable:true});
+        
+        // if (this.modalRef) {
+        //   this.modalRef.componentInstance.imported_expenses = this.imported_expenses;
+        // } else {
+        //   // Handle case if modalRef is null (optional)
+        // }
+        this.selectedFile = null;
+        this.loading = false; // Hide loading spinner
+
+
+      },
+      error =>
+      {
+        console.log("Error : ",error)
+      }
+        
+      );
+
+      // Optional: Reset the selected file
+      
+    } else {
+      console.log("No file selected");
+    }
+
+
+
+  }
 }

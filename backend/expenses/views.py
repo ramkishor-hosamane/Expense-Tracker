@@ -12,6 +12,8 @@ from rest_framework.views import APIView
 from elasticsearch_dsl import Search
 from .search_indexes import ELASTICSEARCH_AVAILABLE
 from rest_framework import status
+
+
 class ExpenseExportView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -71,6 +73,7 @@ class ExpenseDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return super().delete(request, *args, **kwargs)
 
 
+
 class PredictCategoryView(APIView):
     def post(self, request, *args, **kwargs):
         if not ELASTICSEARCH_AVAILABLE:
@@ -94,3 +97,21 @@ class PredictCategoryView(APIView):
             predicted_category = "Unknown",0  # Default category if no matches found
         
         return Response({'category': predicted_category[0],'amount': predicted_category[1]})
+    
+
+
+from .serializers import TransactionSerializer
+
+class ImportTransationsView(APIView):
+    def post(self, request):
+        serializer = TransactionSerializer(data=request.data)
+
+        if serializer.is_valid():
+            transactions = serializer.save()
+            response_data = {
+                'message': 'Transactions parsed successfully',
+                'transactions': transactions,
+            }
+            return Response(response_data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
